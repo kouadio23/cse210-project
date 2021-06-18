@@ -1,4 +1,4 @@
-# [PROGRAM NAME] 
+# The Coof 
 [a description of the program]
 
 ## Getting Started
@@ -21,9 +21,10 @@ root                    (project root folder)
 ```
 
 ## Required Technologies
----
-[list required libraries]
+* Arcade
 
 ## Authors
----
-[list author names and emails]
+* Nick Campbell - cam12044@byui.edu
+* Kathleen Ledesma - led19006@byui.edu
+* Erik Machuca Saez - mac19024@byui.edu
+* Kouadio Kouao - kou15002@byui.edu
