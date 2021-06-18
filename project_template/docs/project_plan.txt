@@ -15,7 +15,7 @@ Wish List
 •	(1) Viruses moving toward player
 •	(3) Music
 •	(2) Jump and hit sounds
-•	(2) Shield power-up  mask
+•	(2) Shield power-up - mask
 •	(3) Background motion
 •	(1) Current score
 •	(2) High Score
@@ -23,7 +23,7 @@ Wish List
 
 (3) High Score Scene
 •	(3) Happy avatar
-•	(3) High score message  congratulations
+•	(3) High score message - congratulations
 •	(3) Play again button
 
 (3) Low Score Scene
@@ -34,13 +34,17 @@ Wish List
 Questions
 
 What program are we going to create?
-•	We are going to create a game called “The Coof,” inspired by the Chrome dinosaur game. It is an arcade game where you control a character on the screen to dodge (jump/duck) viruses. The goal is to dodge as much viruses as possible.
+•	We are going to create a game called “The Coof,” inspired by the Chrome dinosaur game.
+    It is an arcade game where you control a character on the screen to dodge (jump/duck)
+    viruses. The goal is to dodge as much viruses as possible.
 
 What technologies will we use?
 •	We will be using a computer – VS Code, GitHub, Python, and the Arcade library.
 
 What features will we include?
-•	Functional main, game, help, win, and lose screens – inclusive of buttons, score displays, visual displays (eg. characters, background), sound effects, bonus features (power-ups), and text displays.
+•	Functional main, game, help, win, and lose screens – inclusive of buttons, score displays,
+    visual displays (eg. characters, background), sound effects, bonus features (power-ups),
+    and text displays.
 
 What is your timeline?
 •	From now until the time of submission.
