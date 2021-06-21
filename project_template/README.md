@@ -1,5 +1,7 @@
 # The Coof 
-[a description of the program]
+We are going to create a game called “The Coof,” inspired by the Chrome dinosaur game.
+It is an arcade game where you control a character on the screen to dodge (jump/duck)
+viruses. The goal is to dodge as much viruses as possible.
 
 ## Getting Started
 ---
