@@ -1,0 +1,9 @@
+classes:
+1. character
+2. world/background
+3. gravity/physics
+4. obstacles
+5. points (position)
+6. score
+- constants
+- main
