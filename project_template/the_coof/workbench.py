@@ -70,9 +70,12 @@ class MyGame(arcade.Window):
         self.level = 1
 
         # Load sounds
-        self.collect_coin_sound = arcade.load_sound(":resources:sounds/coin1.wav")
-        self.jump_sound = arcade.load_sound(":resources:sounds/jump3.wav")
-        self.game_over = arcade.load_sound(":resources:sounds/gameover1.wav")
+        self.music = arcade.load_sound("project_template/the_coof/assets/funkyrobot.mp3")
+        self.collect_coin_sound = arcade.load_sound("project_template/the_coof/assets/upgrade3.wav")
+        self.jump_sound = arcade.load_sound("project_template/the_coof/assets/jump3.wav")
+        self.game_over = arcade.load_sound("project_template/the_coof/assets/gameover3.wav")
+
+        arcade.play_sound(self.music)
 
     def setup(self, level):
         """ Set up the game here. Call this function to restart the game. """
@@ -216,7 +219,8 @@ class MyGame(arcade.Window):
             # Play a sound
             arcade.play_sound(self.collect_coin_sound)
             # Add one to the score
-            self.score += 1
+        
+        self.score += 1
 
         # Track if we need to change the viewport
         changed_viewport = False
@@ -249,7 +253,7 @@ class MyGame(arcade.Window):
         # See if the user got to the end of the level
         if self.player_sprite.center_x >= self.end_of_map:
             # Advance to the next level
-            self.level += 1
+            self.level = 1
 
             # Load the next level
             self.setup(self.level)
