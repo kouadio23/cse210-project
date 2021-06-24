@@ -23,7 +23,7 @@ PLAYER_JUMP_SPEED = 20
 # How many pixels to keep as a minimum margin between the character
 # and the edge of the screen.
 LEFT_VIEWPORT_MARGIN = 100
-RIGHT_VIEWPORT_MARGIN = 800
+RIGHT_VIEWPORT_MARGIN = 864
 BOTTOM_VIEWPORT_MARGIN = 150
 TOP_VIEWPORT_MARGIN = 100
 
@@ -100,7 +100,7 @@ class MyGame(arcade.Window):
         self.player_sprite.center_x = PLAYER_START_X
         self.player_sprite.center_y = PLAYER_START_Y
         self.player_list.append(self.player_sprite)
-        self.player_sprite.change_x = 10
+        self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
 
         # --- Load in a map from the tiled editor ---
 
@@ -198,9 +198,9 @@ class MyGame(arcade.Window):
         """Called when the user releases a key. """
 
         if key == arcade.key.LEFT or key == arcade.key.A:
-            self.player_sprite.change_x = 10
+            self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.player_sprite.change_x = 10
+            self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
 
     def update(self, delta_time):
         """ Movement and game logic """
@@ -239,7 +239,7 @@ class MyGame(arcade.Window):
         # Did the player touch something they should not?
         if arcade.check_for_collision_with_list(self.player_sprite,
                                                 self.dont_touch_list):
-            self.player_sprite.change_x = 10
+            self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
             self.player_sprite.change_y = 0
             self.player_sprite.center_x = PLAYER_START_X
             self.player_sprite.center_y = PLAYER_START_Y
