@@ -1,3 +1,5 @@
+import arcade
+
 class Input:
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. """
