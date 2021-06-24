@@ -1,6 +1,6 @@
 # program entry point
 import arcade
-from data.constants import Constants
+from data import constants
 from data.character import Character
 from data.obstacles import Obstacles
 from data.point import Point
