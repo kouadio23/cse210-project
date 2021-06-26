@@ -117,7 +117,8 @@ class MyGame(arcade.Window):
 
         # Map name
         # map_name = f":resources:tmx_maps/map2_level_{level}.tmx"
-        map_name = f"project_template/the_coof/map_day.tmx"
+        map_name = f"project_template/the_coof/map_day.tmx"         # DAY
+        # map_name = f"project_template/the_coof/map_night.tmx"     # NIGHT
 
         # Read in the tiled map
         my_map = arcade.tilemap.read_tmx(map_name)
