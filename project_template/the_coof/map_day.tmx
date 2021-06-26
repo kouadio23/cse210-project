@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.0" orientation="orthogonal" renderorder="right-down" width="40" height="17" tilewidth="128" tileheight="128" infinite="0" backgroundcolor="#ababff" nextlayerid="11" nextobjectid="1">
+ <tileset firstgid="1" name="tileset" tilewidth="128" tileheight="128" tilecount="9" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="29">
+   <image width="128" height="128" source="assets/images/grass.png"/>
+  </tile>
+  <tile id="46">
+   <image width="128" height="128" source="assets/images/grassMid.png"/>
+  </tile>
+  <tile id="60">
+   <image width="128" height="128" source="assets/images/planetCenter.png"/>
+  </tile>
+  <tile id="101">
+   <image width="128" height="128" source="assets/images/snow_pile.png"/>
+  </tile>
+  <tile id="102">
+   <image width="128" height="128" source="assets/images/snowCenter.png"/>
+  </tile>
+  <tile id="117">
+   <image width="128" height="128" source="assets/images/snowMid.png"/>
+  </tile>
+  <tile id="178">
+   <image width="128" height="128" source="assets/images/gemBlue.png"/>
+  </tile>
+  <tile id="187">
+   <image width="128" height="128" source="assets/images/saw.png"/>
+  </tile>
+  <tile id="188">
+   <image width="80" height="110" source="assets/images/player_jump.png"/>
+  </tile>
+ </tileset>
+ <layer id="6" name="Platform (Snow)" width="40" height="17" locked="1">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYWqBskOP0UUwRBgBfvzKh
+  </data>
+ </layer>
+ <layer id="7" name="Viruses (Saw)" width="40" height="17" locked="1">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSggDPZQUR0hNcTaNQqGJwAAg7oC8Q==
+  </data>
+ </layer>
+ <layer id="8" name="Don't Touch" width="40" height="17" visible="0" locked="1">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAODHAAqgAAE=
+  </data>
+ </layer>
+ <layer id="9" name="Foreground" width="40" height="17" visible="0" locked="1">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAODHAAqgAAE=
+  </data>
+ </layer>
+ <layer id="10" name="Background" width="40" height="17" visible="0" locked="1">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAODHAAqgAAE=
+  </data>
+ </layer>
+</map>
