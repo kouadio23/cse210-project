@@ -105,18 +105,20 @@ class MyGame(arcade.Window):
         # --- Load in a map from the tiled editor ---
 
         # Name of the layer in the file that has our platforms/walls
-        platforms_layer_name = 'Platforms'
+        platforms_layer_name = 'Platform (Snow)'
         # Name of the layer that has items for pick-up
-        coins_layer_name = 'Coins'
+        coins_layer_name = 'Viruses (Saw)'
         # Name of the layer that has items for foreground
         foreground_layer_name = 'Foreground'
         # Name of the layer that has items for background
-        background_layer_name = 'Background'
+        background_layer_name = 'Background (Clouds)'
         # Name of the layer that has items we shouldn't touch
         dont_touch_layer_name = "Don't Touch"
 
         # Map name
-        map_name = f":resources:tmx_maps/map2_level_{level}.tmx"
+        # map_name = f":resources:tmx_maps/map2_level_{level}.tmx"
+        map_name = f"project_template/the_coof/map_day.tmx"         # DAY
+        # map_name = f"project_template/the_coof/map_night.tmx"     # NIGHT
 
         # Read in the tiled map
         my_map = arcade.tilemap.read_tmx(map_name)
