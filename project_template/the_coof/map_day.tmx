@@ -37,7 +37,7 @@
  </layer>
  <layer id="7" name="Viruses (Saw)" width="40" height="17" locked="1">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSggDPZQUR0hNcTaNQqGJwAAg7oC8Q==
+   eJxjYBgFo2AUjIJRMApGJthDZbWE1JBi32AExLp/NKxGAaUAAHFABeE=
   </data>
  </layer>
  <layer id="8" name="Don't Touch" width="40" height="17" visible="0" locked="1">
@@ -50,9 +50,9 @@
    eJztwTEBAAAAwqD1T20ND6AAAODHAAqgAAE=
   </data>
  </layer>
- <layer id="10" name="Background" width="40" height="17" visible="0" locked="1">
+ <layer id="10" name="Background (Clouds)" width="40" height="17" locked="1">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20ND6AAAODHAAqgAAE=
+   eJxjYBgFo2AUDBeQRmd9Qw1Q4k9i9eJTNxo/o2AUjIJRQBwAAPuBAss=
   </data>
  </layer>
 </map>
