@@ -70,7 +70,7 @@ class MyGame(arcade.Window):
         self.level = 1
 
         # Load sounds
-        self.music = arcade.load_sound("project_template/the_coof/assets/music/[MP3DOWNLOAD.TO] Mick Gordon - 02. Rip  Tear-320k.wav")
+        self.music = arcade.load_sound("project_template/the_coof/assets/Come Thou Fount.wav")
         self.collect_coin_sound = arcade.load_sound("project_template/the_coof/assets/music/upgrade3.wav")
         self.jump_sound = arcade.load_sound("project_template/the_coof/assets/music/jump3.wav")
         self.game_over = arcade.load_sound("project_template/the_coof/assets/music/gameover3.wav")
