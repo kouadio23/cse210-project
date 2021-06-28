@@ -1,12 +1,12 @@
 """
-Platformer Game
+The Coof Game
 """
 import arcade
 
 # Constants
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 650
-SCREEN_TITLE = "Platformer"
+SCREEN_TITLE = "The Coof"
 
 # Constants used to scale our sprites from their original size
 CHARACTER_SCALING = 0.7
@@ -107,7 +107,7 @@ class MyGame(arcade.Window):
         # Name of the layer in the file that has our platforms/walls
         platforms_layer_name = 'Platform (Snow)'
         # Name of the layer that has items for pick-up
-        coins_layer_name = 'Viruses (Saw)'
+        coins_layer_name = 'Shield (Mask)'
         # Name of the layer that has items for foreground
         foreground_layer_name = 'Foreground'
         # Name of the layer that has items for background
