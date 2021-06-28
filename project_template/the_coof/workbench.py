@@ -9,7 +9,7 @@ SCREEN_HEIGHT = 650
 SCREEN_TITLE = "Platformer"
 
 # Constants used to scale our sprites from their original size
-CHARACTER_SCALING = 0.3
+CHARACTER_SCALING = 0.7
 TILE_SCALING = 0.5
 COIN_SCALING = 0.5
 SPRITE_PIXEL_SIZE = 128
@@ -85,7 +85,7 @@ class MyGame(arcade.Window):
         self.view_left = 0
 
         # Keep track of the score
-        self.score = 0
+        # self.score = 0
 
         # Create the Sprite lists
         self.player_list = arcade.SpriteList()
@@ -238,6 +238,7 @@ class MyGame(arcade.Window):
             self.view_bottom = 0
             changed_viewport = True
             arcade.play_sound(self.game_over)
+            quit()
 
         # See if the user got to the end of the level
         if self.player_sprite.center_x >= self.end_of_map -900:
