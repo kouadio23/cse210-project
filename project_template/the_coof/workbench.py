@@ -27,7 +27,7 @@ RIGHT_VIEWPORT_MARGIN = 864
 BOTTOM_VIEWPORT_MARGIN = 150
 TOP_VIEWPORT_MARGIN = 100
 
-PLAYER_START_X = 64
+PLAYER_START_X = 100
 PLAYER_START_Y = 225
 
 
@@ -240,7 +240,7 @@ class MyGame(arcade.Window):
             arcade.play_sound(self.game_over)
 
         # See if the user got to the end of the level
-        if self.player_sprite.center_x >= self.end_of_map:
+        if self.player_sprite.center_x >= self.end_of_map -900:
             # Advance to the next level
             self.level = 1
 
