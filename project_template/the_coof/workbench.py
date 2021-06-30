@@ -11,7 +11,7 @@ SCREEN_TITLE = "The Coof"
 # Constants used to scale our sprites from their original size
 CHARACTER_SCALING = 0.4
 TILE_SCALING = 0.5
-COIN_SCALING = 0.5
+# SHIELD_SCALING = 0.5
 SPRITE_PIXEL_SIZE = 128
 GRID_PIXEL_SIZE = (SPRITE_PIXEL_SIZE * TILE_SCALING)
 
@@ -43,7 +43,7 @@ class MyGame(arcade.Window):
 
         # These are 'lists' that keep track of our sprites. Each sprite should
         # go into a list.
-        self.coin_list = None
+        self.shield_list = None
         self.wall_list = None
         self.foreground_list = None
         self.background_list = None
@@ -71,7 +71,7 @@ class MyGame(arcade.Window):
 
         # Load sounds
         self.music = arcade.load_sound("project_template/the_coof/assets/music/Come Thou Fount.wav")
-        self.collect_coin_sound = arcade.load_sound("project_template/the_coof/assets/music/upgrade3.wav")
+        self.collect_shield_sound = arcade.load_sound("project_template/the_coof/assets/music/upgrade3.wav")
         self.jump_sound = arcade.load_sound("project_template/the_coof/assets/music/jump3.wav")
         self.game_over = arcade.load_sound("project_template/the_coof/assets/music/gameover3.wav")
 
@@ -92,7 +92,7 @@ class MyGame(arcade.Window):
         self.foreground_list = arcade.SpriteList()
         self.background_list = arcade.SpriteList()
         self.wall_list = arcade.SpriteList()
-        self.coin_list = arcade.SpriteList()
+        self.shield_list = arcade.SpriteList()
 
         # Set up the player, specifically placing it at these coordinates.
         image_source = "project_template/the_coof/assets/images/phillips.png"
@@ -141,8 +141,8 @@ class MyGame(arcade.Window):
                                                       scaling=TILE_SCALING,
                                                       use_spatial_hash=True)
 
-        # -- Coins
-        self.coin_list = arcade.tilemap.process_layer(my_map,
+        # -- shields
+        self.shield_list = arcade.tilemap.process_layer(my_map,
                                                       shield_layer_name,
                                                       TILE_SCALING,
                                                       use_spatial_hash=True)
@@ -173,7 +173,7 @@ class MyGame(arcade.Window):
         self.wall_list.draw()
         self.background_list.draw()
         self.wall_list.draw()
-        self.coin_list.draw()
+        self.shield_list.draw()
         self.dont_touch_list.draw()
         self.player_list.draw()
         self.foreground_list.draw()
@@ -197,16 +197,16 @@ class MyGame(arcade.Window):
         # Move the player with the physics engine
         self.physics_engine.update()
 
-        # See if we hit any coins
-        coin_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-                                                             self.coin_list)
+        # See if we hit any shields
+        shield_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
+                                                             self.shield_list)
 
-        # Loop through each coin we hit (if any) and remove it
-        for coin in coin_hit_list:
-            # Remove the coin
-            coin.remove_from_sprite_lists()
+        # Loop through each shield we hit (if any) and remove it
+        for shield in shield_hit_list:
+            # Remove the shield
+            shield.remove_from_sprite_lists()
             # Play a sound
-            arcade.play_sound(self.collect_coin_sound)
+            arcade.play_sound(self.collect_shield_sound)
             # Add one to the score
         
         self.score += 1
