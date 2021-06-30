@@ -9,7 +9,7 @@ SCREEN_HEIGHT = 650
 SCREEN_TITLE = "The Coof"
 
 # Constants used to scale our sprites from their original size
-CHARACTER_SCALING = 0.7
+CHARACTER_SCALING = 0.4
 TILE_SCALING = 0.5
 COIN_SCALING = 0.5
 SPRITE_PIXEL_SIZE = 128
@@ -107,13 +107,13 @@ class MyGame(arcade.Window):
         # Name of the layer in the file that has our platforms/walls
         platforms_layer_name = 'Platform (Snow)'
         # Name of the layer that has items for pick-up
-        coins_layer_name = 'Shield (Mask)'
+        shield_layer_name = 'Shield (Mask)'
         # Name of the layer that has items for foreground
         foreground_layer_name = 'Foreground'
         # Name of the layer that has items for background
         background_layer_name = 'Background (Clouds)'
         # Name of the layer that has items we shouldn't touch
-        dont_touch_layer_name = "Don't Touch"
+        dont_touch_layer_name = "Don't Touch (Viruses)"
 
         # Map name
         map_name = f"project_template/the_coof/assets/maps/map_day.tmx"         # DAY
@@ -143,7 +143,7 @@ class MyGame(arcade.Window):
 
         # -- Coins
         self.coin_list = arcade.tilemap.process_layer(my_map,
-                                                      coins_layer_name,
+                                                      shield_layer_name,
                                                       TILE_SCALING,
                                                       use_spatial_hash=True)
 
