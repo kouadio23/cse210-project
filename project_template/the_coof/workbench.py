@@ -116,8 +116,8 @@ class MyGame(arcade.Window):
         dont_touch_layer_name = "Don't Touch"
 
         # Map name
-        map_name = f"project_template/the_coof/map_day.tmx"         # DAY
-        # map_name = f"project_template/the_coof/map_night.tmx"     # NIGHT
+        map_name = f"project_template/the_coof/assets/maps/map_day.tmx"         # DAY
+        # map_name = f"project_template/the_coof/assets/maps/map_night.tmx"     # NIGHT
 
         # Read in the tiled map
         my_map = arcade.tilemap.read_tmx(map_name)
