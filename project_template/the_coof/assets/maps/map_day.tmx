@@ -3,19 +3,19 @@
  <tileset firstgid="1" name="tileset" tilewidth="128" tileheight="128" tilecount="5" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="101">
-   <image width="128" height="128" source="assets/images/snow_pile.png"/>
+   <image width="128" height="128" source="../images/snow_pile.png"/>
   </tile>
   <tile id="102">
-   <image width="128" height="128" source="assets/images/snowCenter.png"/>
+   <image width="128" height="128" source="../images/snowCenter.png"/>
   </tile>
   <tile id="117">
-   <image width="128" height="128" source="assets/images/snowMid.png"/>
+   <image width="128" height="128" source="../images/snowMid.png"/>
   </tile>
   <tile id="178">
-   <image width="128" height="128" source="assets/images/gemBlue.png"/>
+   <image width="128" height="128" source="../images/gemBlue.png"/>
   </tile>
   <tile id="187">
-   <image width="128" height="128" source="assets/images/saw.png"/>
+   <image width="128" height="128" source="../images/saw.png"/>
   </tile>
  </tileset>
  <layer id="6" name="Platform (Snow)" width="100" height="12" locked="1">
