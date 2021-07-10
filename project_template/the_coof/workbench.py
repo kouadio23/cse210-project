@@ -207,7 +207,7 @@ class MyGame(arcade.Window):
             shield.remove_from_sprite_lists()
             # Play a sound
             arcade.play_sound(self.collect_shield_sound)
-            # Add one to the score
+             # Add one to the score
         
         self.score += 1
 
