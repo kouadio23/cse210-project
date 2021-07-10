@@ -1,3 +1,17 @@
+import os
+PATH = os.path.dirname(os.path.abspath(__file__))
+MUSIC = os.path.join(PATH, '..', 'assets', 'music', 'Come Thou Fount.wav')
+MASK_SOUND = os.path.join(PATH, '..', 'assets', 'music', 'upgrade3.wav')
+JUMP_SOUND = os.path.join(PATH, '..', 'assets', 'music', 'jump3.wav')
+GAME_OVER_SOUND = os.path.join(PATH, '..', 'assets', 'music', 'gameover3.wav')
+
+BRO_NATE = os.path.join(PATH, '..', 'assets', 'images', 'bro nate norm.png')
+
+HIGH_SCORE = os.path.join(PATH, '..', 'high_score.txt')
+
+MAP = os.path.join(PATH, '..', 'assets', 'maps', 'map_day.tmx')
+
+
 # Constants
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 650

@@ -44,14 +44,16 @@ class MyGame(arcade.Window):
         self.level = 1
 
         # Load sounds
-        self.music = arcade.load_sound("assets/music/Come Thou Fount.wav")
-        self.collect_coin_sound = arcade.load_sound("assets/music/upgrade3.wav")
-        self.jump_sound = arcade.load_sound("assets/music/jump3.wav")
-        self.game_over = arcade.load_sound("assets/music/gameover3.wav")
 
+        self.music = arcade.load_sound(constants.MUSIC)
         arcade.play_sound(self.music)
+        self.collect_coin_sound = arcade.load_sound(constants.MASK_SOUND)
+        self.jump_sound = arcade.load_sound(constants.JUMP_SOUND)
+        self.game_over = arcade.load_sound(constants.GAME_OVER_SOUND)
 
-        f = open("high_score.txt", "r")
+        
+
+        f = open(constants.HIGH_SCORE, "r")
         self.high_score = f.readline()
         f.close()
 
@@ -73,7 +75,7 @@ class MyGame(arcade.Window):
         self.coin_list = arcade.SpriteList()
 
         # Set up the player, specifically placing it at these coordinates.
-        image_source = "assets/images/bro nate norm.png"
+        image_source = constants.BRO_NATE
         self.player_sprite = arcade.Sprite(image_source, constants.CHARACTER_SCALING)
         self.player_sprite.center_x = constants.PLAYER_START_X
         self.player_sprite.center_y = constants.PLAYER_START_Y
@@ -92,8 +94,7 @@ class MyGame(arcade.Window):
         dont_touch_layer_name = "Don't Touch (Viruses)"
 
         # Map name
-        map_name = f"assets\maps\map_day.tmx"         # DAY
-        # map_name = f"project_template/the_coof/map_night.tmx"     # NIGHT
+        map_name = constants.MAP
 
         # Read in the tiled map
         my_map = arcade.tilemap.read_tmx(map_name)
@@ -207,9 +208,10 @@ class MyGame(arcade.Window):
             self.player_sprite.center_x = constants.PLAYER_START_X
             self.player_sprite.center_y = constants.PLAYER_START_Y
 
-            f = open("high_score.txt", "w")
-            f.write(str(self.score))
-            f.close()
+            if int(self.score) > int(self.high_score):
+                f = open(constants.HIGH_SCORE, "w")
+                f.write(str(self.score))
+                f.close()
 
             # Set the camera to the start
             self.view_left = 0
