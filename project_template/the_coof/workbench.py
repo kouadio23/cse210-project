@@ -1,34 +1,8 @@
 """
-The Coof Game
+Platformer Game
 """
 import arcade
-
-# Constants
-SCREEN_WIDTH = 1000
-SCREEN_HEIGHT = 650
-SCREEN_TITLE = "The Coof"
-
-# Constants used to scale our sprites from their original size
-CHARACTER_SCALING = 0.4
-TILE_SCALING = 0.5
-# SHIELD_SCALING = 0.5
-SPRITE_PIXEL_SIZE = 128
-GRID_PIXEL_SIZE = (SPRITE_PIXEL_SIZE * TILE_SCALING)
-
-# Movement speed of player, in pixels per frame
-PLAYER_MOVEMENT_SPEED = 7
-GRAVITY = 1
-PLAYER_JUMP_SPEED = 20
-
-# How many pixels to keep as a minimum margin between the character
-# and the edge of the screen.
-LEFT_VIEWPORT_MARGIN = 100
-RIGHT_VIEWPORT_MARGIN = 864
-BOTTOM_VIEWPORT_MARGIN = 150
-TOP_VIEWPORT_MARGIN = 100
-
-PLAYER_START_X = 100
-PLAYER_START_Y = 225
+from data import constants
 
 
 class MyGame(arcade.Window):
@@ -39,11 +13,11 @@ class MyGame(arcade.Window):
     def __init__(self):
 
         # Call the parent class and set up the window
-        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
 
         # These are 'lists' that keep track of our sprites. Each sprite should
         # go into a list.
-        self.shield_list = None
+        self.coin_list = None
         self.wall_list = None
         self.foreground_list = None
         self.background_list = None
@@ -70,12 +44,16 @@ class MyGame(arcade.Window):
         self.level = 1
 
         # Load sounds
-        self.music = arcade.load_sound("project_template/the_coof/assets/music/Come Thou Fount.wav")
-        self.collect_shield_sound = arcade.load_sound("project_template/the_coof/assets/music/upgrade3.wav")
-        self.jump_sound = arcade.load_sound("project_template/the_coof/assets/music/jump3.wav")
-        self.game_over = arcade.load_sound("project_template/the_coof/assets/music/gameover3.wav")
+        self.music = arcade.load_sound("assets/music/Come Thou Fount.wav")
+        self.collect_coin_sound = arcade.load_sound("assets/music/upgrade3.wav")
+        self.jump_sound = arcade.load_sound("assets/music/jump3.wav")
+        self.game_over = arcade.load_sound("assets/music/gameover3.wav")
 
         arcade.play_sound(self.music)
+
+        f = open("high_score.txt", "r")
+
+        self.high_score = f.readline()
 
     def setup(self, level):
         """ Set up the game here. Call this function to restart the game. """
@@ -92,65 +70,65 @@ class MyGame(arcade.Window):
         self.foreground_list = arcade.SpriteList()
         self.background_list = arcade.SpriteList()
         self.wall_list = arcade.SpriteList()
-        self.shield_list = arcade.SpriteList()
+        self.coin_list = arcade.SpriteList()
 
         # Set up the player, specifically placing it at these coordinates.
-        image_source = "project_template/the_coof/assets/images/phillips.png"
-        self.player_sprite = arcade.Sprite(image_source, CHARACTER_SCALING)
-        self.player_sprite.center_x = PLAYER_START_X
-        self.player_sprite.center_y = PLAYER_START_Y
+        image_source = "assets/images/bro nate norm.png"
+        self.player_sprite = arcade.Sprite(image_source, constants.CHARACTER_SCALING)
+        self.player_sprite.center_x = constants.PLAYER_START_X
+        self.player_sprite.center_y = constants.PLAYER_START_Y
         self.player_list.append(self.player_sprite)
-        self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
+        self.player_sprite.change_x = constants.PLAYER_MOVEMENT_SPEED
 
         # --- Load in a map from the tiled editor ---
 
         # Name of the layer in the file that has our platforms/walls
         platforms_layer_name = 'Platform (Snow)'
         # Name of the layer that has items for pick-up
-        shield_layer_name = 'Shield (Mask)'
+        coins_layer_name = 'Viruses (Saw)'
         # Name of the layer that has items for foreground
         foreground_layer_name = 'Foreground'
         # Name of the layer that has items for background
         background_layer_name = 'Background (Clouds)'
         # Name of the layer that has items we shouldn't touch
-        dont_touch_layer_name = "Don't Touch (Viruses)"
+        dont_touch_layer_name = "Don't Touch"
 
         # Map name
-        map_name = f"project_template/the_coof/assets/maps/map_day.tmx"         # DAY
-        # map_name = f"project_template/the_coof/assets/maps/map_night.tmx"     # NIGHT
+        map_name = f"assets\maps\map_day.tmx"         # DAY
+        # map_name = f"project_template/the_coof/map_night.tmx"     # NIGHT
 
         # Read in the tiled map
         my_map = arcade.tilemap.read_tmx(map_name)
 
         # Calculate the right edge of the my_map in pixels
-        self.end_of_map = my_map.map_size.width * GRID_PIXEL_SIZE
+        self.end_of_map = my_map.map_size.width * constants.GRID_PIXEL_SIZE
 
         # -- Background
         self.background_list = arcade.tilemap.process_layer(my_map,
                                                             background_layer_name,
-                                                            TILE_SCALING)
+                                                            constants.TILE_SCALING)
 
         # -- Foreground
         self.foreground_list = arcade.tilemap.process_layer(my_map,
                                                             foreground_layer_name,
-                                                            TILE_SCALING)
+                                                            constants.TILE_SCALING)
 
         # -- Platforms
         self.wall_list = arcade.tilemap.process_layer(map_object=my_map,
                                                       layer_name=platforms_layer_name,
-                                                      scaling=TILE_SCALING,
+                                                      scaling=constants.TILE_SCALING,
                                                       use_spatial_hash=True)
 
-        # -- shields
-        self.shield_list = arcade.tilemap.process_layer(my_map,
-                                                      shield_layer_name,
-                                                      TILE_SCALING,
+        # -- Coins
+        self.coin_list = arcade.tilemap.process_layer(my_map,
+                                                      coins_layer_name,
+                                                      constants.TILE_SCALING,
                                                       use_spatial_hash=True)
 
         # -- Don't Touch Layer
         self.dont_touch_list = arcade.tilemap.process_layer(my_map,
                                                             dont_touch_layer_name,
-                                                            TILE_SCALING,
+                                                            constants.TILE_SCALING,
                                                             use_spatial_hash=True)
 
         # --- Other stuff
@@ -161,7 +139,7 @@ class MyGame(arcade.Window):
         # Create the 'physics engine'
         self.physics_engine = arcade.PhysicsEnginePlatformer(self.player_sprite,
                                                              self.wall_list,
-                                                             GRAVITY)
+                                                             constants.GRAVITY)
 
     def on_draw(self):
         """ Render the screen. """
@@ -173,7 +151,7 @@ class MyGame(arcade.Window):
         self.wall_list.draw()
         self.background_list.draw()
         self.wall_list.draw()
-        self.shield_list.draw()
+        self.coin_list.draw()
         self.dont_touch_list.draw()
         self.player_list.draw()
         self.foreground_list.draw()
@@ -183,12 +161,16 @@ class MyGame(arcade.Window):
         arcade.draw_text(score_text, 10 + self.view_left, 10 + self.view_bottom,
                          arcade.csscolor.BLACK, 18)
 
+        high_score_text = f"High Score: {self.high_score}"
+        arcade.draw_text(high_score_text, 830 + self.view_left, 10 + self.view_bottom,
+                         arcade.csscolor.BLACK, 18)
+
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. """
 
         if key == arcade.key.UP or key == arcade.key.W or key == arcade.key.SPACE:
             if self.physics_engine.can_jump():
-                self.player_sprite.change_y = PLAYER_JUMP_SPEED
+                self.player_sprite.change_y = constants.PLAYER_JUMP_SPEED
                 arcade.play_sound(self.jump_sound)
 
     def update(self, delta_time):
@@ -197,17 +179,17 @@ class MyGame(arcade.Window):
         # Move the player with the physics engine
         self.physics_engine.update()
 
-        # See if we hit any shields
-        shield_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-                                                             self.shield_list)
+        # See if we hit any coins
+        coin_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
+                                                             self.coin_list)
 
-        # Loop through each shield we hit (if any) and remove it
-        for shield in shield_hit_list:
-            # Remove the shield
-            shield.remove_from_sprite_lists()
+        # Loop through each coin we hit (if any) and remove it
+        for coin in coin_hit_list:
+            # Remove the coin
+            coin.remove_from_sprite_lists()
             # Play a sound
-            arcade.play_sound(self.collect_shield_sound)
-             # Add one to the score
+            arcade.play_sound(self.collect_coin_sound)
+            # Add one to the score
         
         self.score += 1
 
@@ -216,8 +198,8 @@ class MyGame(arcade.Window):
 
         # Did the player fall off the map?
         if self.player_sprite.center_y < -100:
-            self.player_sprite.center_x = PLAYER_START_X
-            self.player_sprite.center_y = PLAYER_START_Y
+            self.player_sprite.center_x = constants.PLAYER_START_X
+            self.player_sprite.center_y = constants.PLAYER_START_Y
 
             # Set the camera to the start
             self.view_left = 0
@@ -228,10 +210,13 @@ class MyGame(arcade.Window):
         # Did the player touch something they should not?
         if arcade.check_for_collision_with_list(self.player_sprite,
                                                 self.dont_touch_list):
-            self.player_sprite.change_x = PLAYER_MOVEMENT_SPEED
+            self.player_sprite.change_x = constants.PLAYER_MOVEMENT_SPEED
             self.player_sprite.change_y = 0
-            self.player_sprite.center_x = PLAYER_START_X
-            self.player_sprite.center_y = PLAYER_START_Y
+            self.player_sprite.center_x = constants.PLAYER_START_X
+            self.player_sprite.center_y = constants.PLAYER_START_Y
+
+            f = open("high_score.txt", "w")
+            f.write(self.score)
 
             # Set the camera to the start
             self.view_left = 0
@@ -256,25 +241,25 @@ class MyGame(arcade.Window):
         # --- Manage Scrolling ---
 
         # Scroll left
-        left_boundary = self.view_left + LEFT_VIEWPORT_MARGIN
+        left_boundary = self.view_left + constants.LEFT_VIEWPORT_MARGIN
         if self.player_sprite.left < left_boundary:
             self.view_left -= left_boundary - self.player_sprite.left
             changed_viewport = True
 
         # Scroll right
-        right_boundary = self.view_left + SCREEN_WIDTH - RIGHT_VIEWPORT_MARGIN
+        right_boundary = self.view_left + constants.SCREEN_WIDTH - constants.RIGHT_VIEWPORT_MARGIN
         if self.player_sprite.right > right_boundary:
             self.view_left += self.player_sprite.right - right_boundary
             changed_viewport = True
 
         # Scroll up
-        top_boundary = self.view_bottom + SCREEN_HEIGHT - TOP_VIEWPORT_MARGIN
+        top_boundary = self.view_bottom + constants.SCREEN_HEIGHT - constants.TOP_VIEWPORT_MARGIN
         if self.player_sprite.top > top_boundary:
             self.view_bottom += self.player_sprite.top - top_boundary
             changed_viewport = True
 
         # Scroll down
-        bottom_boundary = self.view_bottom + BOTTOM_VIEWPORT_MARGIN
+        bottom_boundary = self.view_bottom + constants.BOTTOM_VIEWPORT_MARGIN
         if self.player_sprite.bottom < bottom_boundary:
             self.view_bottom -= bottom_boundary - self.player_sprite.bottom
             changed_viewport = True
@@ -287,9 +272,9 @@ class MyGame(arcade.Window):
 
             # Do the scrolling
             arcade.set_viewport(self.view_left,
-                                SCREEN_WIDTH + self.view_left,
+                                constants.SCREEN_WIDTH + self.view_left,
                                 self.view_bottom,
-                                SCREEN_HEIGHT + self.view_bottom)
+                                constants.SCREEN_HEIGHT + self.view_bottom)
 
 
 def main():
