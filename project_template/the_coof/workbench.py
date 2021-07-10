@@ -84,14 +84,12 @@ class MyGame(arcade.Window):
 
         # Name of the layer in the file that has our platforms/walls
         platforms_layer_name = 'Platform (Snow)'
-        # Name of the layer that has items for pick-up
-        coins_layer_name = 'Viruses (Saw)'
         # Name of the layer that has items for foreground
         foreground_layer_name = 'Foreground'
         # Name of the layer that has items for background
         background_layer_name = 'Background (Clouds)'
         # Name of the layer that has items we shouldn't touch
-        dont_touch_layer_name = "Don't Touch"
+        dont_touch_layer_name = "Don't Touch (Viruses)"
 
         # Map name
         map_name = f"assets\maps\map_day.tmx"         # DAY
@@ -117,12 +115,6 @@ class MyGame(arcade.Window):
         self.wall_list = arcade.tilemap.process_layer(map_object=my_map,
                                                       layer_name=platforms_layer_name,
                                                       scaling=constants.TILE_SCALING,
-                                                      use_spatial_hash=True)
-
-        # -- Coins
-        self.coin_list = arcade.tilemap.process_layer(my_map,
-                                                      coins_layer_name,
-                                                      constants.TILE_SCALING,
                                                       use_spatial_hash=True)
 
         # -- Don't Touch Layer
