@@ -52,8 +52,8 @@ class MyGame(arcade.Window):
         arcade.play_sound(self.music)
 
         f = open("high_score.txt", "r")
-
         self.high_score = f.readline()
+        f.close()
 
     def setup(self, level):
         """ Set up the game here. Call this function to restart the game. """
@@ -208,7 +208,8 @@ class MyGame(arcade.Window):
             self.player_sprite.center_y = constants.PLAYER_START_Y
 
             f = open("high_score.txt", "w")
-            f.write(self.score)
+            f.write(str(self.score))
+            f.close()
 
             # Set the camera to the start
             self.view_left = 0
