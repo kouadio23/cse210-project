@@ -51,8 +51,6 @@ class MyGame(arcade.Window):
         self.jump_sound = arcade.load_sound(constants.JUMP_SOUND)
         self.game_over = arcade.load_sound(constants.GAME_OVER_SOUND)
 
-        
-
         f = open(constants.HIGH_SCORE, "r")
         self.high_score = f.readline()
         f.close()
@@ -92,6 +90,7 @@ class MyGame(arcade.Window):
         background_layer_name = 'Background (Clouds)'
         # Name of the layer that has items we shouldn't touch
         dont_touch_layer_name = "Don't Touch (Viruses)"
+        coins_layer_name = "Shield (Mask)"
 
         # Map name
         map_name = constants.MAP
