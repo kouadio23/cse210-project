@@ -178,9 +178,11 @@ class MyGame(arcade.Window):
         # Move the player with the physics engine
         self.physics_engine.update()
 
+        # mask = False
+        # while mask != False:
         # See if we hit any shields
         shield_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-                                                             self.shield_list)
+                                                            self.shield_list)
 
         # Loop through each shield we hit (if any) and remove it
         for shield in shield_hit_list:
@@ -188,7 +190,14 @@ class MyGame(arcade.Window):
             shield.remove_from_sprite_lists()
             # Play a sound
             arcade.play_sound(self.collect_shield_sound)
-            # Add one to the score
+            # Change character to sprite wearing mask
+            image_source = constants.BRO_NATE_MASK
+            self.player_sprite = arcade.Sprite(image_source, constants.CHARACTER_SCALING)
+            # self.player_sprite.center_x = constants.PLAYER_START_X
+            # self.player_sprite.center_y = constants.PLAYER_START_Y + 20
+            self.player_list.append(self.player_sprite)
+            self.player_sprite.change_x = constants.PLAYER_MOVEMENT_SPEED
+
         
         self.score += 1
 
