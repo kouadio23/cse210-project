@@ -188,8 +188,8 @@ class MyGame(arcade.Window):
             shield.remove_from_sprite_lists()
             # Play a sound
             arcade.play_sound(self.collect_shield_sound)
-            # Add bonus 300 points to the score for collecting the mask
-            self.score += 300
+            # Add bonus 400 points to the score for collecting the mask/sanitizer
+            self.score += 400
         
         self.score += 1
 
