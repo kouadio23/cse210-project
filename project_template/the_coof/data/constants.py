@@ -36,7 +36,6 @@ JUMP_SOUND = os.path.join(PATH, '..', 'assets', 'music', 'jump3.wav')
 GAME_OVER_SOUND = os.path.join(PATH, '..', 'assets', 'music', 'gameover3.wav')
 
 BRO_NATE = os.path.join(PATH, '..', 'assets', 'images', 'bro nate norm.png')
-BRO_NATE_MASK = os.path.join(PATH, '..', 'assets', 'images', 'bro nate masked.png')
 
 HIGH_SCORE = os.path.join(PATH, '..', 'high_score.txt')
 
