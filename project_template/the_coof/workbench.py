@@ -178,8 +178,6 @@ class MyGame(arcade.Window):
         # Move the player with the physics engine
         self.physics_engine.update()
 
-        # mask = False
-        # while mask != False:
         # See if we hit any shields
         shield_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                             self.shield_list)
