@@ -37,6 +37,7 @@ GAME_OVER_SOUND = os.path.join(PATH, '..', 'assets', 'music', 'gameover3.wav')
 
 BRO_NATE = os.path.join(PATH, '..', 'assets', 'images', 'bro nate norm.png')
 GAME_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'game title.png')
+# INSTRUCTIONS_SCREEN = os.path.join(PATH, '..', 'assets', 'images', '??? .png')
 GAME_OVER_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'game over.png')
 
 HIGH_SCORE = os.path.join(PATH, '..', 'high_score.txt')
