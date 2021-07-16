@@ -1,5 +1,5 @@
 """
-Platformer Game
+The Coof Game
 """
 import arcade
 from data import constants
@@ -190,14 +190,8 @@ class MyGame(arcade.Window):
             shield.remove_from_sprite_lists()
             # Play a sound
             arcade.play_sound(self.collect_shield_sound)
-            # Change character to sprite wearing mask
-            image_source = constants.BRO_NATE_MASK
-            self.player_sprite = arcade.Sprite(image_source, constants.CHARACTER_SCALING)
-            # self.player_sprite.center_x = constants.PLAYER_START_X
-            # self.player_sprite.center_y = constants.PLAYER_START_Y + 20
-            self.player_list.append(self.player_sprite)
-            self.player_sprite.change_x = constants.PLAYER_MOVEMENT_SPEED
-
+            # Add bonus 300 points to the score for collecting the mask
+            self.score += 300
         
         self.score += 1
 
