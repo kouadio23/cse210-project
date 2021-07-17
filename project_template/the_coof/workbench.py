@@ -80,7 +80,6 @@ class MyGame(arcade.Window):
         self.player_sprite.change_x = constants.PLAYER_MOVEMENT_SPEED
 
         # --- Load in a map from the tiled editor ---
-
         # Name of the layer in the file that has our platforms/walls
         platforms_layer_name = 'Platform (Snow)'
         # Name of the layer that has items for foreground
@@ -226,21 +225,7 @@ class MyGame(arcade.Window):
             arcade.play_sound(self.game_over)
             quit()
 
-        # # See if the user got to the end of the level
-        # if self.player_sprite.center_x >= self.end_of_map -900:
-        #     # Advance to the next level
-        #     self.level = 1
-
-        #     # Load the next level
-        #     self.setup(self.level)
-
-        #     # Set the camera to the start
-        #     self.view_left = 0
-        #     self.view_bottom = 0
-        #     changed_viewport = True
-
         # --- Manage Scrolling ---
-
         # Scroll left
         left_boundary = self.view_left + constants.LEFT_VIEWPORT_MARGIN
         if self.player_sprite.left < left_boundary:

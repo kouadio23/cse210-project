@@ -5,7 +5,7 @@ viruses. The goal is to dodge as much viruses as possible.
 
 ## Getting Started
 ---
-[how to install and run the program]
+Run from __main__.py file.
 
 ## Project Structure
 ---
@@ -29,4 +29,3 @@ root                    (project root folder)
 * Nick Campbell - cam12044@byui.edu
 * Kathleen Ledesma - led19006@byui.edu
 * Erik Machuca Saez - mac19024@byui.edu
-* Kouadio Kouao - kou15002@byui.edu
