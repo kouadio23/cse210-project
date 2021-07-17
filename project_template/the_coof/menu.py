@@ -19,17 +19,9 @@ python -m arcade.examples.view_instructions_and_game_over.py
 """
 
 import arcade
-import random
-import os
 from data import constants
 
-
-file_path = os.path.dirname(os.path.abspath(__file__))
-os.chdir(file_path)
-
-
-WIDTH = 1000
-HEIGHT = 650
+import random
 SPRITE_SCALING = 0.5
 
 
@@ -60,7 +52,7 @@ class InstructionView(arcade.View):
     def on_draw(self):
         arcade.start_render()
 
-        arcade.draw_text("Instructions Screen", WIDTH/2, HEIGHT/2,
+        arcade.draw_text("Instructions Screen", constants.SCREEN_WIDTH/2, constants.SCREEN_HEIGHT/2,
                          arcade.color.BLACK, font_size=50, anchor_x="center") # delete when instructions screen is added
         arcade.draw_text("Click to Start Game", 380, 100, arcade.color.BLACK, 24)
 
@@ -93,8 +85,8 @@ class GameView(arcade.View):
             coin = arcade.Sprite(":resources:images/items/coinGold.png", SPRITE_SCALING / 3)
 
             # Position the coin
-            coin.center_x = random.randrange(WIDTH)
-            coin.center_y = random.randrange(HEIGHT)
+            coin.center_x = random.randrange(constants.SCREEN_WIDTH)
+            coin.center_y = random.randrange(constants.SCREEN_HEIGHT)
 
             # Add the coin to the lists
             self.coin_list.append(coin)
@@ -171,7 +163,7 @@ class GameOverView(arcade.View):
 
 
 def main():
-    window = arcade.Window(WIDTH, HEIGHT, "Different Views Example")
+    window = arcade.Window(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
     window.total_score = 0
     menu_view = MenuView()
     window.show_view(menu_view)
