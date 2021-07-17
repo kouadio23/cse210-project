@@ -44,7 +44,6 @@ class MyGame(arcade.Window):
         self.level = 1
 
         # Load sounds
-
         self.music = arcade.load_sound(constants.MUSIC)
         arcade.play_sound(self.music)
         self.collect_shield_sound = arcade.load_sound(constants.MASK_SOUND)
@@ -63,7 +62,7 @@ class MyGame(arcade.Window):
         self.view_left = 0
 
         # Keep track of the score
-        # self.score = 0
+        self.score = 0
 
         # Create the Sprite lists
         self.player_list = arcade.SpriteList()
@@ -227,18 +226,18 @@ class MyGame(arcade.Window):
             arcade.play_sound(self.game_over)
             quit()
 
-        # See if the user got to the end of the level
-        if self.player_sprite.center_x >= self.end_of_map -900:
-            # Advance to the next level
-            self.level = 1
+        # # See if the user got to the end of the level
+        # if self.player_sprite.center_x >= self.end_of_map -900:
+        #     # Advance to the next level
+        #     self.level = 1
 
-            # Load the next level
-            self.setup(self.level)
+        #     # Load the next level
+        #     self.setup(self.level)
 
-            # Set the camera to the start
-            self.view_left = 0
-            self.view_bottom = 0
-            changed_viewport = True
+        #     # Set the camera to the start
+        #     self.view_left = 0
+        #     self.view_bottom = 0
+        #     changed_viewport = True
 
         # --- Manage Scrolling ---
 
