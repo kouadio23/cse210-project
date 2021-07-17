@@ -19,6 +19,8 @@ python -m arcade.examples.view_instructions_and_game_over.py
 """
 
 import arcade
+import arcade.gui
+from arcade.gui import UIManager
 from data import constants
 
 import random
@@ -28,13 +30,40 @@ SPRITE_SCALING = 0.5
 class MenuView(arcade.View):
     def __init__(self):
         super().__init__()
+        self.ui_manager = UIManager()
         self.texture = arcade.load_texture(constants.GAME_SCREEN)
 
     def on_draw(self):
         arcade.start_render()
 
         self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
-        arcade.draw_text("Click for Instructions", 380, 100, arcade.color.BLACK, 24)
+
+    def on_show_view(self):
+        """ Called once when view is activated. """
+        self.setup()
+    
+    def on_hide_view(self):
+        self.ui_manager.unregister_handlers()
+    
+    def setup(self):
+        """ Set up this view. """
+        self.ui_manager.purge_ui_elements()
+
+        y_slot = self.window.height // 5.5
+        left_column_x = self.window.width // 2
+
+        button_normal = arcade.load_texture(':resources:gui_basic_assets/red_button_normal.png')
+        hovered_texture = arcade.load_texture(':resources:gui_basic_assets/red_button_hover.png')
+        pressed_texture = arcade.load_texture(':resources:gui_basic_assets/red_button_press.png')
+        help_button = arcade.gui.UIImageButton(
+            center_x=left_column_x,
+            center_y=y_slot * 1,
+            normal_texture=button_normal,
+            hover_texture=hovered_texture,
+            press_texture=pressed_texture,
+            text='Instructions'
+        )
+        self.ui_manager.add_ui_element(help_button)
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         instructions_view = InstructionView()
@@ -44,17 +73,40 @@ class MenuView(arcade.View):
 class InstructionView(arcade.View):
     def __init__(self):
         super().__init__()
-        # self.texture = arcade.load_texture(constants.INSTRUCTIONS_SCREEN)
-
-    def on_show(self): # delete when instructions screen is added
-        arcade.set_background_color(arcade.color.ORANGE_PEEL)
+        self.ui_manager = UIManager()
+        self.texture = arcade.load_texture(constants.INSTRUCTIONS_SCREEN)
 
     def on_draw(self):
         arcade.start_render()
 
-        arcade.draw_text("Instructions Screen", constants.SCREEN_WIDTH/2, constants.SCREEN_HEIGHT/2,
-                         arcade.color.BLACK, font_size=50, anchor_x="center") # delete when instructions screen is added
-        arcade.draw_text("Click to Start Game", 380, 100, arcade.color.BLACK, 24)
+        self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
+
+    def on_show_view(self):
+        """ Called once when view is activated. """
+        self.setup()
+    
+    def on_hide_view(self):
+        self.ui_manager.unregister_handlers()
+    
+    def setup(self):
+        """ Set up this view. """
+        self.ui_manager.purge_ui_elements()
+
+        y_slot = self.window.height // 5.5
+        left_column_x = self.window.width // 2
+
+        button_normal = arcade.load_texture(':resources:gui_basic_assets/red_button_normal.png')
+        hovered_texture = arcade.load_texture(':resources:gui_basic_assets/red_button_hover.png')
+        pressed_texture = arcade.load_texture(':resources:gui_basic_assets/red_button_press.png')
+        play_button = arcade.gui.UIImageButton(
+            center_x=left_column_x,
+            center_y=y_slot * 1,
+            normal_texture=button_normal,
+            hover_texture=hovered_texture,
+            press_texture=pressed_texture,
+            text='Play'
+        )
+        self.ui_manager.add_ui_element(play_button)
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         game_view = GameView()
@@ -146,16 +198,43 @@ class GameView(arcade.View):
 class GameOverView(arcade.View):
     def __init__(self):
         super().__init__()
+        self.ui_manager = UIManager()
         self.texture = arcade.load_texture(constants.GAME_OVER_SCREEN)
 
     def on_draw(self):
         arcade.start_render()
 
         self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
-        arcade.draw_text("Click to Play Again", 400, 100, arcade.color.BLACK, 24)
 
         output_total = f"Total Score: {self.window.total_score:,}"
         arcade.draw_text(output_total, 810, 10, arcade.color.BLACK, 18)
+
+    def on_show_view(self):
+        """ Called once when view is activated. """
+        self.setup()
+    
+    def on_hide_view(self):
+        self.ui_manager.unregister_handlers()
+    
+    def setup(self):
+        """ Set up this view. """
+        self.ui_manager.purge_ui_elements()
+
+        y_slot = self.window.height // 5.5
+        left_column_x = self.window.width // 2
+
+        button_normal = arcade.load_texture(':resources:gui_basic_assets/red_button_normal.png')
+        hovered_texture = arcade.load_texture(':resources:gui_basic_assets/red_button_hover.png')
+        pressed_texture = arcade.load_texture(':resources:gui_basic_assets/red_button_press.png')
+        play_button = arcade.gui.UIImageButton(
+            center_x=left_column_x,
+            center_y=y_slot * 1,
+            normal_texture=button_normal,
+            hover_texture=hovered_texture,
+            press_texture=pressed_texture,
+            text='Play Again'
+        )
+        self.ui_manager.add_ui_element(play_button)
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         game_view = GameView()
