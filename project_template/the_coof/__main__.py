@@ -2,7 +2,7 @@ import arcade
 import arcade.gui
 from arcade.gui import UIManager
 from data import constants
-from workbench import MyGame
+from MyGame import MyGame
 
 import random
 SPRITE_SCALING = 0.5
