@@ -4,9 +4,6 @@ from arcade.gui import UIManager
 from data import constants
 from MyGame import MyGame
 
-import random
-SPRITE_SCALING = 0.5
-
 
 class MenuView(arcade.View):
     def __init__(self):
@@ -16,7 +13,6 @@ class MenuView(arcade.View):
 
     def on_draw(self):
         arcade.start_render()
-
         self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
 
     def on_show_view(self):
@@ -59,7 +55,6 @@ class InstructionView(arcade.View):
 
     def on_draw(self):
         arcade.start_render()
-
         self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
 
     def on_show_view(self):
@@ -112,7 +107,6 @@ class GameOverView(arcade.View):
 
     def on_draw(self):
         arcade.start_render()
-
         self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
 
     def on_show_view(self):
