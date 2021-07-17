@@ -5,7 +5,7 @@ import arcade
 from data import constants
 
 
-class MyGame(arcade.Window):
+class GameView(arcade.View):
     """
     Main application class.
     """
